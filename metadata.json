@@ -1,0 +1,6 @@
+{
+  "name": "منصة السفير التعليمية | أ/ محمود عصام",
+  "description": "المنصة التعليمية الرسمية للأستاذ محمود عصام (السفير) لطلاب المرحلة الإعدادية - مواعيد الحصص، فيديوهات الشرح، وآخر الأخبار.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

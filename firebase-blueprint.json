@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "Setting": {
+      "title": "GeneralSettings",
+      "description": "General settings for El Safeer platform including teacher contact info and ticker",
+      "type": "object",
+      "properties": {
+        "teacherName": { "type": "string", "maxLength": 100 },
+        "slogan": { "type": "string", "maxLength": 150 },
+        "whatsappNumber": { "type": "string", "maxLength": 25 },
+        "phone": { "type": "string", "maxLength": 25 },
+        "tickerText": { "type": "string", "maxLength": 300 },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["teacherName", "whatsappNumber"]
+    },
+    "Schedule": {
+      "title": "ClassSchedule",
+      "description": "Class schedule slot for middle school grades",
+      "type": "object",
+      "properties": {
+        "grade": { "type": "string", "enum": ["grade1", "grade2", "grade3"] },
+        "dayOfWeek": { "type": "string", "maxLength": 30 },
+        "dayIndex": { "type": "number" },
+        "time": { "type": "string", "maxLength": 40 },
+        "centerName": { "type": "string", "maxLength": 100 },
+        "centerAddress": { "type": "string", "maxLength": 200 },
+        "notes": { "type": "string", "maxLength": 200 }
+      },
+      "required": ["grade", "dayOfWeek", "time", "centerName"]
+    },
+    "Center": {
+      "title": "EducationalCenter",
+      "description": "Educational center where classes take place",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "address": { "type": "string", "maxLength": 250 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "mapLink": { "type": "string", "maxLength": 300 }
+      },
+      "required": ["name", "address"]
+    },
+    "News": {
+      "title": "NewsItem",
+      "description": "Announcement or latest news item for students",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 150 },
+        "content": { "type": "string", "maxLength": 1000 },
+        "grade": { "type": "string", "enum": ["all", "grade1", "grade2", "grade3"] },
+        "isUrgent": { "type": "boolean" },
+        "dateStr": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["title", "content"]
+    },
+    "Video": {
+      "title": "LessonVideo",
+      "description": "Educational video or lecture recording",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 150 },
+        "grade": { "type": "string", "enum": ["grade1", "grade2", "grade3"] },
+        "youtubeUrl": { "type": "string", "maxLength": 300 },
+        "isComingSoon": { "type": "boolean" },
+        "unitTitle": { "type": "string", "maxLength": 100 },
+        "duration": { "type": "string", "maxLength": 30 }
+      },
+      "required": ["title", "grade", "isComingSoon"]
+    },
+    "Admin": {
+      "title": "AdminUser",
+      "description": "Authorized supervisor or teacher account",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 120 },
+        "name": { "type": "string", "maxLength": 100 },
+        "addedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["email"]
+    }
+  },
+  "firestore": {
+    "/settings/{settingId}": {
+      "schema": "Setting",
+      "description": "Global platform configurations and contact information"
+    },
+    "/schedules/{scheduleId}": {
+      "schema": "Schedule",
+      "description": "Weekly class schedules by middle school grade"
+    },
+    "/centers/{centerId}": {
+      "schema": "Center",
+      "description": "Centers where Mr. Mahmoud Essam delivers lectures"
+    },
+    "/news/{newsId}": {
+      "schema": "News",
+      "description": "Announcements and exam reminders for students"
+    },
+    "/videos/{videoId}": {
+      "schema": "Video",
+      "description": "Lesson videos, revisions, and upcoming classes"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "List of authorized supervisor admin accounts"
+    }
+  }
+}
