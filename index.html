@@ -835,7 +835,7 @@
           <h1 class="hero-title" id="heroTeacherName">أ/ اسم المدرس</h1>
           <p class="hero-welcome" id="heroWelcomeText"></p>
           <div class="hero-buttons">
-            <a id="heroWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+            <a id="heroWhatsappBtn" href="https://wa.me/201286894963?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%AD%D8%B5%D8%B5" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
               <span>💬</span>
               <span>تواصل على واتساب</span>
             </a>
@@ -919,12 +919,18 @@
   <!-- التذييل -->
   <footer class="footer">
     <div class="container">
+      <div style="margin-bottom: 14px;">
+        <a id="footerWhatsappBtn" href="https://wa.me/201286894963?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%AD%D8%B5%D8%B5" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+          <span>💬</span>
+          <span>تواصل على واتساب</span>
+        </a>
+      </div>
       <p id="footerText">جميع الحقوق محفوظة © المنصة التعليمية للمرحلة الإعدادية</p>
     </div>
   </footer>
 
   <!-- زرار واتساب عائم -->
-  <a id="fabWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="تواصل واتساب">
+  <a id="fabWhatsappBtn" href="https://wa.me/201286894963?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%AD%D8%B5%D8%B5" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="تواصل واتساب">
     <span>💬</span>
     <span>واتساب</span>
   </a>
@@ -1016,8 +1022,8 @@
       badgeText: "المنصة التعليمية للمرحلة الإعدادية (1ع • 2ع • 3ع)",
       welcomeMessage:
         "أهلاً بكم يا أبطال المرحلة الإعدادية! هنا هتلاقوا مواعيد الحصص الأسبوعية، عناوين السناتر، آخر الأخبار، وفيديوهات الشرح والمراجعة أول بأول عشان تضمنوا الدرجة النهائية.",
-      whatsappNumber: "201000000000", // اكتب رقمك بصيغة دولية بدون + (مثال مصر: 201012345678)
-      whatsappDefaultText: "السلام عليكم يا مستر، محتاج استفسر عن مواعيد الحصص والحجز.",
+      whatsappNumber: "201286894963", // اكتب رقمك بصيغة دولية بدون + (مثال مصر: 201286894963)
+      whatsappDefaultText: "السلام عليكم، عايز أستفسر عن الحصص",
 
       // مواعيد الحصص التجريبية لكل صف
       // grade لازم يكون: "prep1" (الأول) أو "prep2" (التاني) أو "prep3" (التالت)
@@ -1188,8 +1194,8 @@
               teacherName: parsed.teacherName || defaults.teacherName,
               badgeText: parsed.badgeText || defaults.badgeText,
               welcomeMessage: parsed.welcomeMessage || defaults.welcomeMessage,
-              whatsappNumber: parsed.whatsappNumber || defaults.whatsappNumber,
-              whatsappDefaultText: parsed.whatsappDefaultText || defaults.whatsappDefaultText,
+              whatsappNumber: (parsed.whatsappNumber && parsed.whatsappNumber !== "201000000000") ? parsed.whatsappNumber : defaults.whatsappNumber,
+              whatsappDefaultText: (parsed.whatsappNumber && parsed.whatsappNumber !== "201000000000" && parsed.whatsappDefaultText) ? parsed.whatsappDefaultText : defaults.whatsappDefaultText,
               schedules: Array.isArray(parsed.schedules) ? parsed.schedules : defaults.schedules,
               centers: Array.isArray(parsed.centers) ? parsed.centers : defaults.centers,
               news: Array.isArray(parsed.news) ? parsed.news : defaults.news,
@@ -1240,6 +1246,7 @@
             "?text=" +
             encodeURIComponent(state.whatsappDefaultText || "");
           document.getElementById("heroWhatsappBtn").href = waUrl;
+          document.getElementById("footerWhatsappBtn").href = waUrl;
           document.getElementById("fabWhatsappBtn").href = waUrl;
         }
 
